@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://pointclaimer-backend.onrender.com");
 
 type LeaderboardEntry = {
   id: string;
@@ -17,7 +17,9 @@ function Leaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/leaderboard");
+      const res = await axios.get(
+        "https://pointclaimer-backend.onrender.com/api/leaderboard"
+      );
       setLeaderboard(res.data.data);
     } catch (error) {
       console.error("Failed to load leaderboard", error);

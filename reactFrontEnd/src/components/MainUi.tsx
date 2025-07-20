@@ -8,7 +8,7 @@ type User = {
 };
 
 import io from "socket.io-client";
-const socket = io("http://localhost:3000");
+const socket = io("https://pointclaimer-backend.onrender.com");
 
 function MainUi() {
   const [users, setUsers] = useState<User[]>([]);
@@ -19,7 +19,7 @@ function MainUi() {
   async function fetchUsers() {
     try {
       const response = await axios.get<User[]>(
-        "http://localhost:3000/api/users"
+        "https://pointclaimer-backend.onrender.com/api/users"
       );
       const result = response.data;
       setUsers(result);
@@ -46,9 +46,12 @@ function MainUi() {
     console.log(input);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/users", {
-        name: input.trim(),
-      });
+      const response = await axios.post(
+        "https://pointclaimer-backend.onrender.com/api/users",
+        {
+          name: input.trim(),
+        }
+      );
       setInput("");
 
       if (!response.data) {
@@ -69,9 +72,12 @@ function MainUi() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/claim", {
-        userId: selectUserId,
-      });
+      const response = await axios.post(
+        "https://pointclaimer-backend.onrender.com/api/claim",
+        {
+          userId: selectUserId,
+        }
+      );
 
       const { awardedPoints, user } = response.data;
 
