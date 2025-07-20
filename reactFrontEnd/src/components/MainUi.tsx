@@ -8,8 +8,9 @@ type User = {
 };
 
 import io from "socket.io-client";
-const socket = io("https://pointclaimer-backend.onrender.com");
-
+const socket = io("https://pointclaimer-backend.onrender.com", {
+  transports: ["websocket"],
+});
 function MainUi() {
   const [users, setUsers] = useState<User[]>([]);
   const [input, setInput] = useState("");

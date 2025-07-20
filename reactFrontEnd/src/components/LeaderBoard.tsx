@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("https://pointclaimer-backend.onrender.com");
+const socket = io("https://pointclaimer-backend.onrender.com", {
+  transports: ["websocket"],
+});
 
 type LeaderboardEntry = {
   id: string;
