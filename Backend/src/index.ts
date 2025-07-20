@@ -17,7 +17,7 @@ connectMongoDb();
 const server = http.createServer(app);
 export const io = new Server(server, {
   cors: {
-    origin: "https://pointclaimer.netlify.app/",
+    origin: "https://pointclaimer-backend.onrender.com",
     methods: ["GET", "POST"],
   },
 });
